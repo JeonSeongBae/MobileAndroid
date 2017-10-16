@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jsb.ms_hw04_201302476.MenuActivity">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="선택 메뉴"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/location_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="위치 권한"
+            android:layout_margin="16dp"/>
+
+        <Button
+            android:id="@+id/camera_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="카메라 권한"
+            android:layout_margin="16dp" />
+
+        <Button
+            android:id="@+id/calendar_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="달력 권한"
+            android:layout_margin="16dp" />
+
+        <Button
+            android:id="@+id/login_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="로그인 화면"
+            android:layout_margin="16dp" />
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
