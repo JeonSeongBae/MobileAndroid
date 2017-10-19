@@ -40,14 +40,13 @@ public class MainActivity extends AppCompatActivity {
         save = (Button) findViewById(R.id.save);
         name = (EditText) findViewById(R.id.name);
         phone = (EditText) findViewById(R.id.phone);
+
         currentUpdate();
+
         date.setOnClickListener(new View.OnClickListener(){
            @Override
             public void onClick(View v){
-               Context context = new ContextThemeWrapper(MainActivity.this, android.R.style.Theme_Holo_Light_Dialog);
-               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                   context = MainActivity.this;
-               }
+               Context context = MainActivity.this;
                DatePickerDialog datePickerDialog = new DatePickerDialog(context, dateSetListener, currentYear, currentMonth-1, currentDay);
                datePickerDialog.show();
            }
@@ -56,10 +55,7 @@ public class MainActivity extends AppCompatActivity {
         time.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                    Context context = new ContextThemeWrapper(MainActivity.this, android.R.style.Theme_Holo_Light_Dialog);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        context = MainActivity.this;
-                    }
+                    Context context = MainActivity.this;
                     TimePickerDialog timePickerDialog = new TimePickerDialog(context ,timeSetListener, currentHour, currentMin ,false);
                     timePickerDialog.show();
             }
@@ -68,18 +64,18 @@ public class MainActivity extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                    Toast.makeText(getApplicationContext(),"이름 : " + name.getText().toString() + ", 번호 : " +phone.getText().toString()
-                            + "\n날짜 : " + currentYear + "년 " + currentMonth + "월 " + currentDay + "일,\n시간 : "+currentHour+"시 " +currentMin+"분", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"이름:" + name.getText().toString() + ",번호:" +phone.getText().toString() + "날짜:" + currentYear + "년" + currentMonth + "월" + currentDay + "일,시간 : "+currentHour+"시" +currentMin+"분", Toast.LENGTH_LONG).show();
             }
         });
     }
     private DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            date.setText(year+"년 "+(monthOfYear+1)+"월 "+dayOfMonth+"일");
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            date.setText(year+"년 "+(month+1)+"월 "+day+"일");
             currentYear = year;
-            currentMonth = monthOfYear+1;
-            currentDay = dayOfMonth;
+            currentMonth = month;
+            currentMonth++;
+            currentDay = day;
         }
     };
     private TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
@@ -92,23 +88,18 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void currentUpdate() {
-        SimpleDateFormat year = new SimpleDateFormat("yyyy");
-        SimpleDateFormat month = new SimpleDateFormat("MM");
-        SimpleDateFormat day = new SimpleDateFormat("dd");
-        SimpleDateFormat hour = new SimpleDateFormat("HH");
-        SimpleDateFormat min = new SimpleDateFormat("mm");
 
-        Date CD = new Date(System.currentTimeMillis());
-        currentYear = Integer.parseInt(year.format(CD));
-        currentMonth = Integer.parseInt(month.format(CD));
-        currentDay = Integer.parseInt(day.format(CD));
-        currentHour = Integer.parseInt(hour.format(CD));
-        currentMin = Integer.parseInt(min.format(CD));
+        Date currentDate = new Date(System.currentTimeMillis());
+        currentYear = Integer.parseInt(new SimpleDateFormat("yyyy").format(currentDate));
+        currentMonth = Integer.parseInt(new SimpleDateFormat("MM").format(currentDate));
+        currentDay = Integer.parseInt(new SimpleDateFormat("dd").format(currentDate));
+        currentHour = Integer.parseInt(new SimpleDateFormat("HH").format(currentDate));
+        currentMin = Integer.parseInt(new SimpleDateFormat("mm").format(currentDate));
 
         SimpleDateFormat newDate = new SimpleDateFormat("yyyy년 MM월 dd일");
         SimpleDateFormat newTime = new SimpleDateFormat("HH시 mm분");
 
-        date.setText(newDate.format(CD));
-        time.setText(newTime.format(CD));
+        date.setText(newDate.format(currentDate));
+        time.setText(newTime.format(currentDate));
     }
 }

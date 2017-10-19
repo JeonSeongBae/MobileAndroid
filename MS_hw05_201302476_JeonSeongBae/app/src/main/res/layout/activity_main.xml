@@ -44,6 +44,8 @@
             <EditText
                 android:id="@+id/phone"
                 android:inputType="number"
+                android:digits="0123456789"
+                android:maxLength="11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

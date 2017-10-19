@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.jsb.ms_lab06_201302476_jeonseongbae_3.MainActivity">
 
     <!--progress-->
@@ -69,13 +70,15 @@
             android:layout_height="wrap_content"
             android:text="RatingBar"
             android:textSize="20dp"/>
+
         <RatingBar
             android:id="@+id/ratingBar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
             android:rating="3.0"
-            android:stepSize="0.5"/>
+            android:stepSize="0.5" />
+
         <TextView
             android:id="@+id/ratingBarText"
             android:layout_width="wrap_content"
