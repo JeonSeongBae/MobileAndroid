@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.system.ErrnoException;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,22 +29,28 @@ public class MainActivity extends AppCompatActivity {
         naver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String naverUrl = "http://www.naver.com";
-                webview.loadUrl(naverUrl);
+                naver();
             }
         });
 
         move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String moveUrl = url.getText().toString();
-                webview.loadUrl(moveUrl);
+                move();
             }
         });
     }
     private void webview() {
         webview.setWebViewClient (new WebViewClient());
         webview.loadUrl("http://www.naver.com");
+    }
+    private void naver() {
+        String naverUrl = "http://www.naver.com";
+        webview.loadUrl(naverUrl);
+    }
+    private void move() {
+        String moveUrl = url.getText().toString();
+        webview.loadUrl(moveUrl);
     }
 
 }
