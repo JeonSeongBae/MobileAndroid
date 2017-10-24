@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jsb.ms_hw06_201302476.MainActivity">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteY="8dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@android:color/darker_gray">
+        <EditText
+            android:id="@+id/url" 
+            android:layout_width="190dp"
+            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/naver"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="네이버"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/move"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="이동"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/searchLayout"
+
+
+            >
+        </WebView>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
