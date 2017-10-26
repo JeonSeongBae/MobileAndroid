@@ -107,10 +107,6 @@ public class MainActivity extends AppCompatActivity {
     }
     private void move() {
         String moveUrl = url.getText().toString();
-        // http://를 입력하지 않았을 경우 http://를 추가시켜준다.
-        if (!moveUrl.toString().contentEquals("http://")){
-            moveUrl = "http://"+moveUrl;
-        }
         webview.loadUrl(moveUrl);
     }
 }
