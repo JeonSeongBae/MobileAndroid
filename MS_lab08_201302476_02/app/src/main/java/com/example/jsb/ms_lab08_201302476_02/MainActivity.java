@@ -2,12 +2,14 @@ package com.example.jsb.ms_lab08_201302476_02;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     EditText editText;
-    ListView listView;
+    GridView gridView;
     SingerAdapter adapter;
 
     class SingerAdapter extends BaseAdapter {
@@ -41,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
             view.setMobile(item.getMobile());
             view.setYear(item.getYear());
             view.setImage(item.getResId());
+
+            int numColumns = gridView.getNumColumns();
+            int rowIndex = position/numColumns;
+            int columnIndex = position%numColumns;
+            Log.d("SingerAdapter","index : " + rowIndex+", "+columnIndex);
             return view;
         }
     }
@@ -49,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = (ListView) findViewById(R.id.listView);
+        gridView = (GridView) findViewById(R.id.gridView);
 
         adapter = new SingerAdapter();
         adapter.addIem(new SingerItem("소녀시대","010-1000-1000",2007,R.drawable.girlsgeneration));
@@ -59,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.addIem(new SingerItem("AOA","010-5000-5000",2012,R.drawable.aoa));
         adapter.addIem(new SingerItem("트와이스","010-6000-6000",2015,R.drawable.twice));
 
-        listView.setAdapter(adapter);
+        gridView.setAdapter(adapter);
 
         editText = (EditText) findViewById(R.id.editText);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 SingerItem item = (SingerItem) adapter.getItem(position);
