@@ -34,6 +34,6 @@ public class SingerItemView extends LinearLayout {
     }
     public void setName(String name){textView.setText(name);}
     public void setMobile(String mobile){textView2.setText(mobile);}
-    public void setYear(int year){textView3.setText(String.valueOf(year));}
+    public void setYear(String year){textView3.setText(year);}
     public void setImage(int resId){imageView.setImageResource(resId);}
 }

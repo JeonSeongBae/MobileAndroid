@@ -1,5 +1,7 @@
 package com.example.jsb.ms_hw07_201302476;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -40,12 +42,37 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
             SingerItemView view = new SingerItemView(getApplicationContext());
-
             SingerItem item = items.get(position);
             view.setName(item.getName());
             view.setMobile(item.getMobile());
             view.setYear(item.getYear());
             view.setImage(item.getResId());
+            view.setTag(position);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("안내")        // 제목 설정
+                            .setMessage("삭제하시겠습니까?")        // 메세지 설정
+                            .setCancelable(false)        // 뒤로 버튼 클릭시 취소 가능 설정
+                            .setPositiveButton("예", new DialogInterface.OnClickListener(){
+                                // 확인 버튼 클릭시 설정
+                                public void onClick(DialogInterface dialog, int whichButton){
+                                    int po = (int) view.getTag();
+                                    items.remove(po);
+                                    textView = (TextView) findViewById(R.id.textView);
+                                    textView.setText(adapter.getCount()+"명");
+                                    notifyDataSetChanged();finish();                                }
+                            })
+                            .setNegativeButton("아니오", new DialogInterface.OnClickListener(){
+                                // 취소 버튼 클릭시 설정
+                                public void onClick(DialogInterface dialog, int whichButton){
+                                    dialog.cancel();
+                                }
+                            });
+
+                }
+            });
             return view;
         }
     }
@@ -66,29 +93,15 @@ public class MainActivity extends AppCompatActivity {
                 birth = (EditText) findViewById(R.id.birth);
                 adapter.addIem(new SingerItem(name.getText().toString(), phone.getText().toString(), birth.getText().toString(), R.drawable.customer));
                 listView.setAdapter(adapter);
+                textView = (TextView) findViewById(R.id.textView);
+                textView.setText(adapter.getCount()+"명");
                 name.setText("");
                 phone.setText("");
                 birth.setText("");
             }
         });
         adapter = new SingerAdapter();
-//        adapter.addIem(new SingerItem("소녀시대","010-1000-1000",2007,R.drawable.customer));
-//        adapter.addIem(new SingerItem("에이핑크","010-2000-2000",2011,R.drawable.customer));
-//        adapter.addIem(new SingerItem("여자친구","010-3000-3000",2015,R.drawable.customer));
-//        adapter.addIem(new SingerItem("레드벨벳","010-4000-4000",2014,R.drawable.customer));
-//        adapter.addIem(new SingerItem("AOA","010-5000-5000",2012,R.drawable.customer));
-//        adapter.addIem(new SingerItem("트와이스","010-6000-6000",2015,R.drawable.customer));
 
-//        listView.setAdapter(adapter);
-
-        textView = (TextView) findViewById(R.id.textView);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                SingerItem item = (SingerItem) adapter.getItem(position);
-                Toast.makeText(getApplicationContext(),"선택 : "+item.getName(),Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
 
