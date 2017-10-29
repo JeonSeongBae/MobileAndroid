@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
                     builder.setTitle("안내")        // 제목 설정
                             .setMessage("삭제하시겠습니까?")        // 메세지 설정
                             .setCancelable(false)        // 뒤로 버튼 클릭시 취소 가능 설정
@@ -62,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
                                     items.remove(po);
                                     textView = (TextView) findViewById(R.id.textView);
                                     textView.setText(adapter.getCount()+"명");
-                                    notifyDataSetChanged();finish();                                }
+                                    notifyDataSetChanged();
+                                }
                             })
                             .setNegativeButton("아니오", new DialogInterface.OnClickListener(){
                                 // 취소 버튼 클릭시 설정
@@ -70,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
                                     dialog.cancel();
                                 }
                             });
-
+                    AlertDialog dialog = builder.create();    // 알림창 객체 생성
+                    dialog.show();    // 알림창 띄우기
                 }
             });
             return view;
