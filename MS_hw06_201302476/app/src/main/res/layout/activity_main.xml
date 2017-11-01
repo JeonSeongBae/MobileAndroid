@@ -15,7 +15,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:background="@android:color/darker_gray">
         <EditText
-            android:id="@+id/url" 
+            android:id="@+id/url"
             android:layout_width="190dp"
             android:layout_height="match_parent"/>
         <Button
@@ -43,10 +43,7 @@
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/searchLayout"
-
-
-            >
+            android:layout_below="@+id/searchLayout">
         </WebView>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
