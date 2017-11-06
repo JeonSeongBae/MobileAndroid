@@ -28,7 +28,21 @@
             android:onClick="start"
             android:text="Start"/>
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:baselineAligned="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
     <!--seekBar-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,12 +57,13 @@
             android:layout_height="wrap_content"
             android:text="SeekBar"
             android:textSize="20dp"/>
+
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="100"
-            android:progress="100"/>
+            android:progress="100" />
         <TextView
             android:id="@+id/seekBarText"
             android:layout_width="wrap_content"
