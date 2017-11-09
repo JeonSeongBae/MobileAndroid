@@ -7,17 +7,22 @@ package com.example.jsb.ms_hw08_201302476;
 public class SingerItem {
     String name;
     String mobile;
-    int year;
+    String price;
+    String comment;
     int resId;
 
-    public SingerItem(String name, String mobile, int year, int resId){
-        this.name = name;
+    public SingerItem(String name, String mobile, String price, String comment, int resId){
+        this.name = "["+name+"]";
         this.mobile=mobile;
-        this.year=year;
+        this.price=price;
+        this.comment=comment;
         this.resId= resId;
     }
-    public int getYear(){return year;}
-    public void setYear(int year){this.year=year;}
+    public String getPrice(){return price;}
+    public void setPrice(String price){this.price=price;}
+
+    public String getComment(){return comment;}
+    public void setComment(String comment){this.comment=comment;}
 
     public int getResId(){return resId;}
     public void setResId(int resId){this.resId=resId;}
