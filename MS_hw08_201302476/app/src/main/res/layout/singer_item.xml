@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:orientation="vertical">
         <LinearLayout
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -30,7 +30,7 @@
                 android:id="@+id/company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:textSize="15dp"
                 android:text="제조사"/>
 
@@ -66,7 +66,7 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

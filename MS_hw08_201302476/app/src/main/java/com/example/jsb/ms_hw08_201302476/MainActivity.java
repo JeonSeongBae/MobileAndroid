@@ -21,32 +21,24 @@ public class MainActivity extends AppCompatActivity {
     GridView gridView;
     SingerAdapter adapter;
     ActionBar abar;
-
     class SingerAdapter extends BaseAdapter {
         ArrayList<SingerItem> items = new ArrayList<SingerItem>();
-
         @Override
         public int getCount() {return items.size();}
-
         public void addIem(SingerItem item){items.add(item);}
-
         @Override
         public Object getItem(int position) {return items.get(position);}
-
         @Override
         public long getItemId(int position) {return position;}
-
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
             SingerItemView view = new SingerItemView(getApplicationContext());
-
             SingerItem item = items.get(position);
             view.setName(item.getName());
             view.setMobile(item.getMobile());
             view.setPrice(item.getPrice());
             view.setComment(item.getComment());
             view.setImage(item.getResId());
-
             int numColumns = gridView.getNumColumns();
             int rowIndex = position/numColumns;
             int columnIndex = position%numColumns;
