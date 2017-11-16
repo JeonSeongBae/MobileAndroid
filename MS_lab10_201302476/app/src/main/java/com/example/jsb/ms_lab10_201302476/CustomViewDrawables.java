@@ -30,6 +30,8 @@ class CustomViewDrawables extends View{
     public CustomViewDrawables(Context context){
         super(context);
 
+        // get display size
+        // 윈도우 매니저를 이용해 뷰의 폭과 높이 확인
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
         Point sizePoint = new Point();
@@ -37,23 +39,28 @@ class CustomViewDrawables extends View{
         int width = sizePoint.x;
         int height = sizePoint.y;
 
+        //get colors
+        // 리소스에 정의된 색상 값을 변수에 설정
         Resources curRes = getResources();
         int blackColor = curRes.getColor(R.color.color01);
         int grayColor = curRes.getColor(R.color.color02);
         int darkGrayColor = curRes.getColor(R.color.color03);
 
         // create the upper drawable
+        // Drawable 객체 생성
         upperDrawable = new ShapeDrawable();
 
         RectShape rectangle = new RectShape();
         rectangle.resize(width, height * 2/3);
         upperDrawable.setShape(rectangle);
         upperDrawable.setBounds(0,0,width, height * 2/3);
+        // LinearGradient 객체 생성
         LinearGradient gradient = new LinearGradient(0,0,0, height*2/3, grayColor, blackColor, TileMode.CLAMP);
 
         Paint paint = upperDrawable.getPaint();
         paint.setShader(gradient);
 
+        // create the lower drawable
         lowerDrawable = new ShapeDrawable();
 
         RectShape rectangle2 = new RectShape();
@@ -65,11 +72,12 @@ class CustomViewDrawables extends View{
 
         Paint paint2 = lowerDrawable.getPaint();
         paint2.setShader(gradient2);
-    }
+    } /* end CustomViewDrawables constructure*/
 
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
 
+        // Drawable 객체 그리기
         upperDrawable.draw(canvas);
         lowerDrawable.draw(canvas);
 
@@ -82,6 +90,8 @@ class CustomViewDrawables extends View{
         pathPaint.setStrokeJoin(Join.MITER);
 
         Path path = new Path();
+        // moveTo: 좌표 값 추가
+        // lineTo: 이전 좌표 값과 선으로 연결되는 좌표 값 추가
         path.moveTo(20, 20);
         path.lineTo(120, 20);
         path.lineTo(160, 90);
@@ -94,6 +104,7 @@ class CustomViewDrawables extends View{
         pathPaint.setStrokeCap(Cap.ROUND);
         pathPaint.setStrokeJoin(Join.ROUND);
 
+        // offset을 주어 좌표 이동한 뒤 Path 객체 그리기
         path.offset(30, 120);
         canvas.drawPath(path, pathPaint);
 
@@ -101,7 +112,8 @@ class CustomViewDrawables extends View{
         pathPaint.setStrokeCap(Cap.SQUARE);
         pathPaint.setStrokeJoin(Join.BEVEL);
 
+        // offset을 주어 좌표 이동한 뒤 Path 객체 그리기
         path.offset(30, 120);
         canvas.drawPath(path, pathPaint);
-    }
-}
+    } /* end onDraw method */
+} /* end class CustomViewDrawables */
