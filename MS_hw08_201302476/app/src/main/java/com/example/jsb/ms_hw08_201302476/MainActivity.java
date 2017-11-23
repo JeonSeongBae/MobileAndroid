@@ -2,7 +2,6 @@ package com.example.jsb.ms_hw08_201302476;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     GridView gridView;
     SingerAdapter adapter;
-    ActionBar abar;
     class SingerAdapter extends BaseAdapter {
         ArrayList<SingerItem> items = new ArrayList<SingerItem>();
         @Override
@@ -68,11 +66,9 @@ public class MainActivity extends AppCompatActivity {
                 String company = data.getStringExtra("company");
                 String name = data.getStringExtra("name");
                 String price = data.getStringExtra("price");
-
                 int p = Integer.parseInt(price);
                 DecimalFormat commas = new DecimalFormat("#,###");
                 price = (String)commas.format(p);
-
                 String comment = data.getStringExtra("comment");
                 adapter.addIem(new SingerItem(company, name, price, comment, R.drawable.clothes5));
                 adapter.notifyDataSetChanged();
@@ -80,14 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        abar = this.getSupportActionBar();
-        abar.show();
-
+        this.getSupportActionBar().show();
         gridView = (GridView) findViewById(R.id.gridView);
 
         adapter = new SingerAdapter();
