@@ -31,8 +31,8 @@ public class InsertItem extends AppCompatActivity {
                 intent.putExtra("name", name.getText().toString());
                 intent.putExtra("price", price.getText().toString());
                 intent.putExtra("comment", comment.getText().toString());
-                setResult(1, intent);
 
+                setResult(1, intent);
                 finish();
             }
         });
